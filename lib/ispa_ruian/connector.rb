@@ -48,6 +48,7 @@ module IspaRuian
       if curl.status == "200 OK"
       
         parsed_response = ::JSON.parse curl.body
+        curl.close
       
         if parsed_response["success"]
           return parsed_response["data"]
@@ -55,7 +56,9 @@ module IspaRuian
           raise parsed_response["message"]
         end
       else
-        raise curl.status
+        curl_status = curl.status
+        curl.close
+        raise curl_status
       end
 
     end
