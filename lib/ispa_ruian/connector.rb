@@ -53,6 +53,7 @@ module IspaRuian
         if parsed_response["success"]
           return parsed_response["data"]
         else
+          return [] if parsed_response["message"] == "No items found"
           raise parsed_response["message"]
         end
       else
