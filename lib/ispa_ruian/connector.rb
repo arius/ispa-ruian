@@ -33,7 +33,7 @@ module IspaRuian
 
 
     def self.build_url(params)
-      URI.encode(([Configuration.api_url] + params).flatten.compact.join("/"))
+      URI.encode(([Configuration.api_url] + params).flatten.compact.join("/") + "?expanded=1")
     end
     
     def self.build_curl(params)
