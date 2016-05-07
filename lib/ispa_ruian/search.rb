@@ -36,7 +36,7 @@ module IspaRuian
     
     def self.by_polygon(*params)
       method_name = "by-polygon"
-      response = Connector.post([@model_name, method_name], params)
+      response = Connector.post([@model_name, method_name], *params)
     end
     
     #http://ruian.ispa.cz/api/address-register-search/by-circle/50.2399336/16.5188739/1000

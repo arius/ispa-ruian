@@ -13,7 +13,7 @@ module IspaRuian
     
     def self.by_polygon(*params)
       method_name = "by-polygon"
-      response = Connector.post([@model_name, method_name], params)
+      response = Connector.post([@model_name, method_name], *params)
     end
     
     #/by-cadastral-area-and-parcel-number/788431/1
