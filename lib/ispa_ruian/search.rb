@@ -25,7 +25,7 @@ module IspaRuian
     #http://ruian.ispa.cz/api/address-register-search/by-fulltext/Holice, Vysokomýtská 289
     def self.by_fulltext(filter_param, options = {})
       method_name = "by-fulltext"
-      response = Connector.get(@model_name, method_name, filter_param, options[:limit])
+      response = Connector.get([@model_name, method_name, filter_param], options)
     end
     
     #IspaRuian::Search.multiple_by_fulltext "Vysokomýtská 289, Holice", "Rooseveltova, Brno"
@@ -34,15 +34,15 @@ module IspaRuian
       response = Connector.post([@model_name, method_name], params)
     end
     
-    def self.by_polygon(*params)
+    def self.by_polygon(data, options = {})
       method_name = "by-polygon"
-      response = Connector.post([@model_name, method_name], *params)
+      response = Connector.post([@model_name, method_name], data, options)
     end
     
     #http://ruian.ispa.cz/api/address-register-search/by-circle/50.2399336/16.5188739/1000
     def self.by_circle(latitude, longitude, radius)
       method_name = "by-circle"
-      response = Connector.get(@model_name, method_name, latitude, longitude, radius)
+      response = Connector.get([@model_name, method_name, latitude, longitude, radius])
     end
 
    
