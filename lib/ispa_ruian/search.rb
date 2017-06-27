@@ -25,7 +25,12 @@ module IspaRuian
     #http://ruian.ispa.cz/api/address-register-search/by-fulltext/Holice, Vysokomýtská 289
     def self.by_fulltext(filter_param, options = {})
       method_name = "by-fulltext"
-      response = Connector.get([@model_name, method_name, filter_param], options)
+      
+      array_path = [@model_name, method_name, filter_param]
+      array_path << options[:limit] if options[:limit]
+      options.delete(:limit)
+      
+      response = Connector.get(array_path, options)
     end
     
     #IspaRuian::Search.multiple_by_fulltext "Vysokomýtská 289, Holice", "Rooseveltova, Brno"

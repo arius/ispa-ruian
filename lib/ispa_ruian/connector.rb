@@ -73,6 +73,7 @@ module IspaRuian
     def build_url(params, options)
       options.merge!(expanded: 1)
       encoded_uri = URI.encode(([Configuration.api_url] + params).flatten.compact.join("/") + "?" + options.to_query)
+      p encoded_uri
       return encoded_uri
     end
     
